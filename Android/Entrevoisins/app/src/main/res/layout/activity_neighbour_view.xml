@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".ui.neighbour_list.NeighbourView">
+    tools:context=".ui.neighbour_list.NeighbourViewActivity">
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
@@ -40,13 +39,14 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:clickable="true"
-        android:src="@drawable/ic_star_white_24dp"
-        app:tint="@color/colorFavori"
+        android:focusable="true"
+        android:src="@drawable/ic_star_border_white_24dp"
+        app:elevation="@dimen/activity_vertical_margin"
         app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_Avatar"
         app:layout_constraintEnd_toEndOf="@+id/imageView_Avatar"
         app:layout_constraintTop_toBottomOf="@+id/imageView_Avatar"
-        android:focusable="true" />
+        app:tint="@color/colorFavori" />
 
 
     <com.google.android.material.card.MaterialCardView
@@ -56,6 +56,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:importantForAccessibility="no"
                 android:src="@android:drawable/stat_sys_phone_call"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_Position"
@@ -95,6 +97,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/location_on_40px"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Text_Prenom_Neighbour_card"
@@ -106,6 +109,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:importantForAccessibility="no"
                 android:src="@drawable/language_40px"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_phone"
@@ -141,13 +145,14 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <ImageView
-        android:id="@+id/imageView_Arrow_Back"
+    <ImageButton
+        android:id="@+id/imageButton_Arrow_Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/arrow_back_40px"
+        android:background="@null"
         app:layout_constraintStart_toStartOf="@+id/imageView_Avatar"
         app:layout_constraintTop_toTopOf="@+id/imageView_Avatar"
         app:tint="@android:color/white" />
@@ -160,10 +165,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="40dp"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewInfo" >
+        app:layout_constraintTop_toBottomOf="@+id/cardViewInfo">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -193,7 +199,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_About_Me" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

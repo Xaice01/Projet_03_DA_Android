@@ -20,6 +20,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class NeighbourFragment extends Fragment {
@@ -27,16 +28,25 @@ public class NeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
+    private List<Neighbour> favoris;
+
+    private static final String KEY_POSITION="position"; //position on tab
+
 
 
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(int position) {
         NeighbourFragment fragment = new NeighbourFragment();
+
+        Bundle args = new Bundle();
+        args.putInt(KEY_POSITION, position);
+        fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +70,24 @@ public class NeighbourFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+
+            //todo -- pour vérifier a supprimer
+         if(mNeighbours.get(0).getName()=="Caroline"){
+         mNeighbours.get(0).setFavori(true);
+         mNeighbours.get(1).setFavori(true);
+         mNeighbours.get(5).setFavori(true);}
+
+
+
+            favoris = mNeighbours.stream().filter(Neighbour::isFavori).collect(Collectors.toList()); //récupére que les favoris
+
+        if(getArguments().getInt(KEY_POSITION)==0)
+        {
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        }
+        else {
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(favoris));
+        }
     }
 
     @Override

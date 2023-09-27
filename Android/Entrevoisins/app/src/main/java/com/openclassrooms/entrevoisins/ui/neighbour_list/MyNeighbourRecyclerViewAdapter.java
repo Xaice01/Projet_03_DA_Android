@@ -1,6 +1,12 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import static android.app.PendingIntent.getActivity;
+
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;       //import android.support.v7.widget.RecyclerView;
+
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,12 +32,17 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
     private final List<Neighbour> mNeighbours;
 
+    private static final String KEY_NEIGHBOUR="kneighbour";
+
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
     }
 
+    //test
+    private ViewGroup parent;
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.parent=parent;
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_neighbour, parent, false);
         return new ViewHolder(view);
@@ -49,6 +61,28 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
+            }
+
+        });
+            //ajout perso
+        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
+
+            //appel de l'activity NeighbourViewActivity
+            @Override
+            public void onClick(View view) {//todo
+                //getActivity();
+                //getActivity(Context)
+                //NeighbourViewActivity.navigate(neighbour);
+
+                // non fonctionnel
+               //view = LayoutInflater.from(parent.getContext())
+               //        .inflate(R.layout.activity_neighbour_view, parent, false);
+               //new ViewHolder(view);
+                Bundle bundleNeighbour = new Bundle();
+                bundleNeighbour.putLong(KEY_NEIGHBOUR, neighbour.getId());
+                ListNeighbourActivity listNeighbourActivity= new ListNeighbourActivity();
+                listNeighbourActivity.viewNeighbour(bundleNeighbour);
+
             }
         });
     }
