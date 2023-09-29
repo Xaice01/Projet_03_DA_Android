@@ -20,12 +20,12 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance(position);     //la position détermine le tab utilisé
+        return NeighbourFragment.newInstance(position);     //position détermine le tab utilisé
     }
 
     /**
      * get the number of pages
-     * @return
+     * @return 2
      */
     @Override
     public int getCount() {return 2;} // page voisin et page favoris

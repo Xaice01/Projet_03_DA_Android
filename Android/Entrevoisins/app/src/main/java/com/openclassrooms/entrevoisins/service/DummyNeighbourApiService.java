@@ -45,4 +45,12 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
             }
         }
     }
+
+    public void deleteFavori(Neighbour neighbour){
+        for(Neighbour i:neighbours){
+            if(i.equals(neighbour)) {
+                i.setFavori(false);
+            }
+        }
+    }
 }

@@ -1,6 +1,9 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import static com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourViewActivity.KEY_NEIGHBOUR;
+
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;      //import android.support.v7.widget.DividerItemDecoration;
@@ -78,16 +81,27 @@ public class NeighbourFragment extends Fragment {
          mNeighbours.get(5).setFavori(true);}
 
 
-
-            favoris = mNeighbours.stream().filter(Neighbour::isFavori).collect(Collectors.toList()); //récupére que les favoris
-
+        favoris = mNeighbours.stream().filter(Neighbour::isFavori).collect(Collectors.toList()); //récupére que les favoris
+        MyNeighbourRecyclerViewAdapter adapter=null;
         if(getArguments().getInt(KEY_POSITION)==0)
         {
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+            adapter = new MyNeighbourRecyclerViewAdapter(mNeighbours);
+            mRecyclerView.setAdapter(adapter);
+
         }
         else {
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(favoris));
+            adapter = new MyNeighbourRecyclerViewAdapter(favoris);
+            mRecyclerView.setAdapter(adapter);
         }
+        adapter.setOnItemClickListener(new MyNeighbourRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, long id) {
+                Intent intent =new Intent(getActivity(), NeighbourViewActivity.class);
+                intent.putExtra(KEY_NEIGHBOUR,id);
+                startActivity(intent);
+
+            }
+        });
     }
 
     @Override

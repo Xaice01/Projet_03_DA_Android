@@ -8,6 +8,9 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton; //import android.widget.Button;
 
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.model.Neighbour;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +28,7 @@ public class ListNeighbourActivity extends AppCompatActivity {
 
     ListNeighbourPagerAdapter mPagerAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,15 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+
+      //  final ArrayList<Neighbour> emplist = Constants.getEmployeeData();
+      //  binding.rvItemsList.setLayoutManager(new LinearLayoutManager(this));
+      //  binding.rvItemsList.setHasFixedSize(true);
+//
+      //  mPagerAdapter.setOnClickListener(new mPagerAdapter.OnClickListener(){
+//
+      //  })
+
     }
 
     @OnClick(R.id.add_neighbour)
@@ -43,8 +56,4 @@ public class ListNeighbourActivity extends AppCompatActivity {
         AddNeighbourActivity.navigate(this);
     }
 
-    public void viewNeighbour(Bundle neighbour)
-    {//todo
-        NeighbourViewActivity.navigate(this, neighbour);
-    }
 }

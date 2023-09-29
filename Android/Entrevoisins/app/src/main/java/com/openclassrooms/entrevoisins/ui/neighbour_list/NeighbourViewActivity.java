@@ -55,7 +55,8 @@ public class NeighbourViewActivity extends AppCompatActivity {
     TextView mTextDescription;
 
 
-    private static final String KEY_NEIGHBOUR="kneighbour";
+    static final String KEY_NEIGHBOUR="kneighbour";
+
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private Neighbour neighbour;
@@ -66,14 +67,12 @@ public class NeighbourViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neighbour_view);
         ButterKnife.bind(this);
-        //todo debut --a enlever--
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); //retour avec la fleche de back l'action barre
-        //todo fin
+
         mApiService = DI.getNeighbourApiService();
         mNeighbours=mApiService.getNeighbours();
 
-        recupTrueNeighbour(savedInstanceState.getLong(KEY_NEIGHBOUR));  // initialise l'atttribut neightbour
-
+        //recupTrueNeighbour(savedInstanceState.getLong(KEY_NEIGHBOUR));  // initialise l'atttribut neightbour
+        recupTrueNeighbour(getIntent().getLongExtra(KEY_NEIGHBOUR,0));
 
 
         init();
@@ -87,14 +86,20 @@ public class NeighbourViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Back to previous Activity.
-                NeighbourViewActivity.this.onDestroy();
+                finish();
             }
         });
 
         mButtonFavori.setOnClickListener(new FloatingActionButton.OnClickListener(){
             @Override
             public void onClick(View v){
-                mApiService.addfavori(neighbour);
+                if(neighbour.isFavori()==false){
+                    mApiService.addfavori(neighbour);                                       //set favori to true
+                    mButtonFavori.setImageResource(R.drawable.ic_star_white_24dp);          //switch image mButtonFavori
+                } else {
+                    mApiService.deleteFavori(neighbour);                                 //set favori to false
+                    mButtonFavori.setImageResource(R.drawable.ic_star_border_white_24dp);   //switch image mButtonFavori
+                }
             }
         });
     }
@@ -137,9 +142,10 @@ public class NeighbourViewActivity extends AppCompatActivity {
    //     ActivityManagerCompat activityManagerCompat = intent;
    //     ActivityCompat.startActivity(activity, intent, null);
    // }
-   public static void navigate(FragmentActivity activity, Bundle neighbour) {//todo
-       Intent intent = new Intent(activity, NeighbourViewActivity.class);
-       intent.putExtras(neighbour);
-       ActivityCompat.startActivity(activity, intent, null);
-   }
+ //  public static void navigate(FragmentActivity activity, Bundle neighbour) {//todo
+ //      Intent intent = new Intent(activity, NeighbourViewActivity.class);
+ //      intent.putExtras(neighbour);
+ //      //startActivity(intent);
+ //      ActivityCompat.startActivity(activity, intent, null);
+ //  }
 }
