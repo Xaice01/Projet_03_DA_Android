@@ -74,12 +74,6 @@ public class NeighbourFragment extends Fragment {
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
 
-            //todo -- pour vérifier a supprimer
-         if(mNeighbours.get(0).getName()=="Caroline"){
-         mNeighbours.get(0).setFavori(true);
-         mNeighbours.get(1).setFavori(true);
-         mNeighbours.get(5).setFavori(true);}
-
 
         favoris = mNeighbours.stream().filter(Neighbour::isFavori).collect(Collectors.toList()); //récupére que les favoris
         MyNeighbourRecyclerViewAdapter adapter=null;

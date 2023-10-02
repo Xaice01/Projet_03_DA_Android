@@ -40,15 +40,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-
-      //  final ArrayList<Neighbour> emplist = Constants.getEmployeeData();
-      //  binding.rvItemsList.setLayoutManager(new LinearLayoutManager(this));
-      //  binding.rvItemsList.setHasFixedSize(true);
-//
-      //  mPagerAdapter.setOnClickListener(new mPagerAdapter.OnClickListener(){
-//
-      //  })
-
     }
 
     @OnClick(R.id.add_neighbour)
