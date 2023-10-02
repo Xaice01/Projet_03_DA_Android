@@ -1,10 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.utils.RecupNeighbour;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
@@ -72,14 +69,11 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mNeighbours=mApiService.getNeighbours();
 
         //recupTrueNeighbour(savedInstanceState.getLong(KEY_NEIGHBOUR));  // initialise l'atttribut neightbour
-        recupTrueNeighbour(getIntent().getLongExtra(KEY_NEIGHBOUR,0));
 
+        //recupere le neighbour de la liste de mNeighbours de l'Apiservice
+        neighbour= RecupNeighbour.recupTrueNeighbour(getIntent().getLongExtra(KEY_NEIGHBOUR,0),mNeighbours);
 
         init();
-
-
-
-
 
         //pour le Back à la list
         mbuttonBack.setOnClickListener(new ImageButton.OnClickListener() {
@@ -104,15 +98,6 @@ public class NeighbourViewActivity extends AppCompatActivity {
         });
     }
 
-    //recupere le neighbour de la liste de mNeighbours de l'Apiservice
-    private void recupTrueNeighbour(long idNeighbour){
-        Neighbour Fakeneighbour= new Neighbour(idNeighbour,"a","b","c","d","e");
-        for(Neighbour i:mNeighbours){
-            if(i.equals(Fakeneighbour)) {
-                neighbour= i;
-            }
-        }
-    }
 
     private void init(){
 

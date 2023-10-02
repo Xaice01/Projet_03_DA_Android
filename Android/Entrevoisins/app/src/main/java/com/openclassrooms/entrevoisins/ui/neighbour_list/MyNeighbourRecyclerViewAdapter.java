@@ -112,14 +112,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         return mNeighbours.size();
     }
 
-   // public void setOnClickListener(View.OnClickListener onClickListener) {
-   //     this.onClickListener = onClickListener;
-   // }
-//
-   // public interface OnClickListener{
-   //     void onClick(int position,int model);
-   // }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_list_avatar)
         public ImageView mNeighbourAvatar;
@@ -128,7 +120,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
 
-        //todo
+
         public void onBind(Neighbour neighbour) {
             mNeighbourName.setText(neighbour.getName());
             Glide.with(mNeighbourAvatar.getContext())
@@ -145,10 +137,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             });
 
             itemView.setOnClickListener(new View.OnClickListener() {
-
-
                 @Override
-                public void onClick(View view) {//todo
+                public void onClick(View view) {
                     if (mListener != null) {
                         if (getAdapterPosition() != RecyclerView.NO_POSITION) { // to make sure the position is valid
                             mListener.onItemClick(getAdapterPosition(), neighbour.getId());
