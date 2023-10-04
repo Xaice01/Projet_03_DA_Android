@@ -27,4 +27,16 @@ public interface NeighbourApiService {
      * @param neighbour
      */
     void createNeighbour(Neighbour neighbour);
+
+    /**
+     * set favori attribut to true to a neighbour
+     * @param neighbour
+     */
+    void addfavori(Neighbour neighbour);
+
+    /**
+     * set favori attribut to false to a neighbour
+     * @param neighbour
+     */
+    void deleteFavori(Neighbour neighbour);
 }
