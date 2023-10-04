@@ -68,13 +68,10 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mApiService = DI.getNeighbourApiService();
         mNeighbours=mApiService.getNeighbours();
 
-        //recupTrueNeighbour(savedInstanceState.getLong(KEY_NEIGHBOUR));  // initialise l'atttribut neightbour
-
         //recupere le neighbour de la liste de mNeighbours de l'Apiservice
         neighbour= RecupNeighbour.recupTrueNeighbour(getIntent().getLongExtra(KEY_NEIGHBOUR,0),mNeighbours);
 
         init();
-
         //pour le Back à la list
         mbuttonBack.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
@@ -98,7 +95,6 @@ public class NeighbourViewActivity extends AppCompatActivity {
         });
     }
 
-
     private void init(){
 
         Glide.with(this).load(neighbour.getAvatarUrl()).into(mAvatar); //afficher l'image de l'avatar
@@ -117,20 +113,4 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mTextDescription.setText(neighbour.getAboutMe());
 
     }
-
-
-
-   // public static void navigate(Neighbour neighbour) {
-   //     ActivityManagerCompat activityManagerCompat = intent;
-   //     getActivity();
-   //     Intent intent = new Intent((AppCompatActivity)ListNeighbourActivity, NeighbourViewActivity.class);
-   //     ActivityManagerCompat activityManagerCompat = intent;
-   //     ActivityCompat.startActivity(activity, intent, null);
-   // }
- //  public static void navigate(FragmentActivity activity, Bundle neighbour) {//todo
- //      Intent intent = new Intent(activity, NeighbourViewActivity.class);
- //      intent.putExtras(neighbour);
- //      //startActivity(intent);
- //      ActivityCompat.startActivity(activity, intent, null);
- //  }
 }

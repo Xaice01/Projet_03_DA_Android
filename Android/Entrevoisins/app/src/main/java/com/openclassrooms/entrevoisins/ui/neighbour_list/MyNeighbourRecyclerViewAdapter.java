@@ -1,12 +1,8 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import static android.app.PendingIntent.getActivity;
 
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;       //import android.support.v7.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +15,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -63,48 +58,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Neighbour neighbour = mNeighbours.get(position);
         holder.onBind(neighbour);
-
-    //    holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-    //        @Override
-    //        public void onClick(View v) {
-    //            EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-    //        }
-//
-    //    });
-
-
-        //click on item
-       // holder.itemView.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-       //     public void onClick(View view) {
-       //         if (onClickListener != null) {
-       //             onClickListener.onClick(position, neighbour.getId());
-       //         }
-       //     }
-       // });
-
-
-        //ajout perso
-//        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
-//
-//            //appel de l'activity NeighbourViewActivity
-//            @Override
-//            public void onClick(View view) {//todo
-//                //getActivity();
-//                //getActivity(Context)
-//                //NeighbourViewActivity.navigate(neighbour);
-//
-//                // non fonctionnel
-//               //view = LayoutInflater.from(parent.getContext())
-//               //        .inflate(R.layout.activity_neighbour_view, parent, false);
-//               //new ViewHolder(view);
-//                Bundle bundleNeighbour = new Bundle();
-//                bundleNeighbour.putLong(KEY_NEIGHBOUR, neighbour.getId());
-//                ListNeighbourActivity listNeighbourActivity= new ListNeighbourActivity();
-//                listNeighbourActivity.viewNeighbour(bundleNeighbour);
-//            }
-  //      });
-
     }
 
     @Override
@@ -133,7 +86,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 public void onClick(View v) {
                     EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
                 }
-
             });
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -144,11 +96,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                             mListener.onItemClick(getAdapterPosition(), neighbour.getId());
                         }
                     }
-
                 }
             });
-
-
         }
         public ViewHolder(View view) {
             super(view);

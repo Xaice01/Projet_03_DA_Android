@@ -1,12 +1,8 @@
 
 package com.openclassrooms.entrevoisins.neighbour_list;
 
-import androidx.test.espresso.ViewAction;
-import androidx.test.espresso.ViewFinder;
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.espresso.action.GeneralClickAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;  //import android.support.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.espresso.matcher.ViewMatchers; //import android.support.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;  //import android.support.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;  //import android.support.test.runner.AndroidJUnit4;
 
@@ -19,14 +15,12 @@ import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;   //import static android.support.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;   //import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -35,23 +29,17 @@ import static androidx.test.espresso.matcher.ViewMatchers.assertThat;   //import
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;     //import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 /**
@@ -154,8 +142,7 @@ public class NeighboursListTest {
         tabView2.perform(click());
         onView(withIndex(withId(R.id.list_neighbours),1)).check(withItemCount(0));  //check if list of favori is equal at 0
 
-        ViewInteraction tabView1 = onView(
-                allOf(childAtPosition(childAtPosition(withId(R.id.tabs), 0), 0)));                //sur l'onglet Neighbour
+        ViewInteraction tabView1 = onView(allOf(childAtPosition(childAtPosition(withId(R.id.tabs), 0), 0)));                //sur l'onglet Neighbour
         tabView1.perform(click());
 
         ///------------------------------------///
