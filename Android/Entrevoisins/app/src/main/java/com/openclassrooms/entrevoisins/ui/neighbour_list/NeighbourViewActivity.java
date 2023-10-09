@@ -51,6 +51,9 @@ public class NeighbourViewActivity extends AppCompatActivity {
     @BindView(R.id.textView_Description)
     TextView mTextDescription;
 
+    @BindView(R.id.image_world)
+    ImageView mImageFB;
+
 
     static final String KEY_NEIGHBOUR="kneighbour";
 
@@ -84,7 +87,7 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mButtonFavori.setOnClickListener(new FloatingActionButton.OnClickListener(){
             @Override
             public void onClick(View v){
-                if(neighbour.isFavori()==false){
+                if(!neighbour.isFavori()){                                                  //if neighbour.isFavori==false
                     mApiService.addfavori(neighbour);                                       //set favori to true
                     mButtonFavori.setImageResource(R.drawable.ic_star_white_24dp);          //switch image mButtonFavori
                 } else {
@@ -110,6 +113,10 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mTextPosition.setText(neighbour.getAddress());
         mTextTel.setText(neighbour.getPhoneNumber());
         mTextLienFacebook.setText("");              //lien FaceBook inexistant dans l'objet neighbour
+        if(mTextLienFacebook.getText()==""){        // rendre invisible si il n'y a pas de lien facebook
+            mTextLienFacebook.setVisibility(View.GONE);
+            mImageFB.setVisibility(View.GONE);
+        }
         mTextDescription.setText(neighbour.getAboutMe());
 
     }

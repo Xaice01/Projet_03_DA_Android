@@ -5,4 +5,36 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+    /*-------------------------------------------
+    /*dimen activity_neighbour_view
+    /*-------------------------------------------
+    <dimen name="card_Elevation">4dp</dimen>
+    <dimen name="margin_card_start">16dp</dimen>
+    <dimen name="margin_top_card">16dp</dimen>
+    <dimen name="margin_end_card">16dp</dimen>
+    <dimen name="icon_height">25dp</dimen>
+    <dimen name="icon_width">25dp</dimen>
+    <dimen name="marginStartIcon">16dp</dimen>
+    <dimen name="marginTopIcon">16dp</dimen>
+    <dimen name="text_Pos_Num_Face_Start">24dp</dimen>
+    <dimen name="margin_Titre_Start">16dp</dimen>
+    <dimen name="text_Titre_Size">20sp</dimen>
+    <dimen name="layout_margin_Vertical">16dp</dimen>
+    <dimen name="margin_Start_End_description">16dp</dimen>
+    <dimen name="margin_Top_description">16dp</dimen>
+    <dimen name="margin_Top_divider">4dp</dimen>
+    <dimen name="height_divider">0.6dp</dimen>
+    <dimen name="margin_start_Prenom">16dp</dimen>
+    <dimen name="margin_Bottom_Prenom">32dp</dimen>
+    <dimen name="text_Prenom_Size">32sp</dimen>
+    <dimen name="padding_NestedScrolView">16dp</dimen>
+    <dimen name="margin_end_Buttom_Favori">16dp</dimen>
+    <dimen name="width_ImageBack">50dp</dimen>
+    <dimen name="height_ImageBack">50dp</dimen>
+    <dimen name="margin_Start_Back">16dp</dimen>
+    <dimen name="margin_Top_Back">16dp</dimen>
+    <dimen name="height_Image_Avatar">300dp</dimen>
+
+
 </resources>
