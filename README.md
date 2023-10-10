@@ -6,7 +6,16 @@ Ce dépôt contient l'application Entrevoisins qui permet afficher une liste de 
 Pour installer l'application il faut avoir un téléphone sous Android 
 API minimun 24
 
-## Instalation
+## Instalation (Dévelopeur)
+Clone le projet dans Android Studio 
+- File -> new -> Project From Version Control...
+- copier l'url du projet (https://github.com/Xaice01/Projet_03_DA_Android.git)
+- dans Android Studio File-> open
+- ouvrir le fichier ...\Projet_03_DA_Android\Android\Entrevoisins
+- créer une nouvelle branch git
+- lancer l'application sur un emulateur Maj+F10
+
+## Instalation (Utilisateur)
 Installer l'APK sur Android:
 - Télécharger L'APK (https://github.com/Xaice01/Projet_03_DA_Android/blob/master/Entrevoisins.apk)
 - Mettre L'APK sur votre Téléphone
