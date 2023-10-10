@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/padding_NestedScrolView"
-    android:background="@color/colorBackground">
+    android:paddingBottom="@dimen/padding_NestedScrolView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_NeighbourViewActivity"

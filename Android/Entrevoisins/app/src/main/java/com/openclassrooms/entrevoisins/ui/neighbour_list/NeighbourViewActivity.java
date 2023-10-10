@@ -79,7 +79,7 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mbuttonBack.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Back to previous Activity.
+                // Back to previous Activity
                 finish();
             }
         });
@@ -113,7 +113,7 @@ public class NeighbourViewActivity extends AppCompatActivity {
         mTextPosition.setText(neighbour.getAddress());
         mTextTel.setText(neighbour.getPhoneNumber());
         mTextLienFacebook.setText("");              //lien FaceBook inexistant dans l'objet neighbour
-        if(mTextLienFacebook.getText()==""){        // rendre invisible si il n'y a pas de lien facebook
+        if(mTextLienFacebook.getText()==""){        // rendre inexistant si il n'y a pas de lien facebook
             mTextLienFacebook.setVisibility(View.GONE);
             mImageFB.setVisibility(View.GONE);
         }

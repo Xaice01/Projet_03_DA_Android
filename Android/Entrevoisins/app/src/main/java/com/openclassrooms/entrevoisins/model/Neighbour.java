@@ -43,7 +43,7 @@ public class Neighbour {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
-        this.favori=false;          //attribue inisialisé
+        this.favori=false;          //attribue initialisé
     }
 
     public long getId() {

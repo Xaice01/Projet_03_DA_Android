@@ -31,14 +31,13 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
     private static final String KEY_NEIGHBOUR="kneighbour";
 
-    private OnItemClickListener mListener;
-    //private View.OnClickListener onClickListener;   //for the click on l'item
+    private OnItemClickListener mListener;      //for the click on l'item
 
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
     }
 
-    //test
+
     private ViewGroup parent;
 
 

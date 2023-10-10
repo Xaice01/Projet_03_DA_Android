@@ -20,7 +20,8 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="40dp"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:importantForAccessibility="no" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/nameLyt"
@@ -34,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone number"
+                android:hint="@string/phone_number"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +85,7 @@
                 android:lines="4"
                 android:minLines="4"
                 android:ems="10"
-                android:hint="About me"
+                android:hint="@string/about_me"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +98,7 @@
             android:layout_gravity="center"
             app:cornerRadius="20dp"
             android:layout_marginTop="20dp"
-            android:text="Save"/>
+            android:text="@string/save"/>
 
     </LinearLayout>
 

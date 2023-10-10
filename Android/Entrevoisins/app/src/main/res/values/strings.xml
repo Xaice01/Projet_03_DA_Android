@@ -4,5 +4,9 @@
     <string name="tab_favorites_title">Favorites</string>
     <string name="activity_new_neighbour">New neighbour</string>
     <string name="About_me">A propos de moi</string>
-    <string name="Name">Prénom</string>
+    <string name="phone_number">Phone number</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="about_me">About me</string>
+    <string name="save">Save</string>
 </resources>
