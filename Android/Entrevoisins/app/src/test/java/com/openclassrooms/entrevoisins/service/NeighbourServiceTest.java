@@ -1,8 +1,13 @@
 package com.openclassrooms.entrevoisins.service;
 
-import com.openclassrooms.entrevoisins.utils.RecupNeighbour;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.utils.RecupNeighbour;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
@@ -12,11 +17,6 @@ import org.junit.runners.JUnit4;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 
 /**
@@ -32,6 +32,7 @@ public class NeighbourServiceTest {
         service = DI.getNewInstanceApiService();
     }
 
+    //ajout un neighbour
     @Test
     public void getNeighboursWithSuccess() {
         List<Neighbour> neighbours = service.getNeighbours();
@@ -39,6 +40,7 @@ public class NeighbourServiceTest {
         assertThat(neighbours, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedNeighbours.toArray()));
     }
 
+    //test delete neighbour
     @Test
     public void deleteNeighbourWithSuccess() {
         Neighbour neighbourToDelete = service.getNeighbours().get(0);
@@ -48,7 +50,7 @@ public class NeighbourServiceTest {
 
     //test ajout favori
     @Test
-    public void addNeighbourToFavoris(){
+    public void addNeighbourToFavoris() {
         Neighbour neighbourToFavori = service.getNeighbours().get(0);
         service.addfavori(neighbourToFavori);                           //ajout du voisin dans les favori
 
@@ -57,7 +59,7 @@ public class NeighbourServiceTest {
 
     //test delete favori
     @Test
-    public void deleteNeighbourToFavoris(){
+    public void deleteNeighbourToFavoris() {
         Neighbour neighbourToFavoriDelete = service.getNeighbours().get(0);
         neighbourToFavoriDelete.setFavori(true);                                // inisiatlisation un favoris
         service.deleteFavori(neighbourToFavoriDelete);                          //supprime le voisin des favori
@@ -67,7 +69,7 @@ public class NeighbourServiceTest {
 
     //test d’ajout du voisin à la liste de favoris
     @Test
-    public void checkToListFavori(){
+    public void checkToListFavori() {
 
         List<Neighbour> neighbours = service.getNeighbours();
         Neighbour neighbourToFavori = service.getNeighbours().get(0);
@@ -79,17 +81,16 @@ public class NeighbourServiceTest {
 
     //récuperer l'utilisateur de la liste par son id recupTrueNeighbour(long idNeighbour)
     @Test
-    public void getNeighbourWithId(){
+    public void getNeighbourWithId() {
         List<Neighbour> neighbours = service.getNeighbours();
         Neighbour neighbourToCheck = service.getNeighbours().get(0);
-        long id=neighbourToCheck.getId();
+        long id = neighbourToCheck.getId();
         Neighbour neighbour;
-        neighbour = RecupNeighbour.recupTrueNeighbour(id,neighbours);
+        neighbour = RecupNeighbour.getNeighbourByID(id, neighbours);
 
-        assertTrue(neighbour.equals(neighbourToCheck));
+        assertEquals(neighbour, neighbourToCheck);
 
     }
-
 
 
 }

@@ -3,14 +3,13 @@ package com.openclassrooms.entrevoisins.service;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Dummy mock for the Api
  */
-public class DummyNeighbourApiService implements  NeighbourApiService {
+public class DummyNeighbourApiService implements NeighbourApiService {
 
-    private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
+    private final List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
 
 
     /**
@@ -31,6 +30,7 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     /**
      * {@inheritDoc}
+     *
      * @param neighbour
      */
     @Override
@@ -38,11 +38,11 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         neighbours.add(neighbour);
     }
 
-    public void addfavori(Neighbour neighbour){
+    public void addfavori(Neighbour neighbour) {
         neighbour.setFavori(true);
     }
 
-    public void deleteFavori(Neighbour neighbour){
+    public void deleteFavori(Neighbour neighbour) {
         neighbour.setFavori(false);
     }
 }

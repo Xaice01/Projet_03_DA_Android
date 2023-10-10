@@ -5,13 +5,14 @@ import static com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourViewAct
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;      //import android.support.v7.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;        //import android.support.v7.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;       //import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
@@ -33,12 +34,12 @@ public class NeighbourFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private List<Neighbour> favoris;
 
-    private static final String KEY_POSITION="position"; //position on tab
-
+    private static final String KEY_POSITION = "position"; //position on tab
 
 
     /**
      * Create and return a new instance
+     *
      * @return @{@link NeighbourFragment}
      */
     public static NeighbourFragment newInstance(int position) {
@@ -74,22 +75,20 @@ public class NeighbourFragment extends Fragment {
         mNeighbours = mApiService.getNeighbours();
 
         favoris = mNeighbours.stream().filter(Neighbour::isFavori).collect(Collectors.toList()); //récupére que les favoris
-        MyNeighbourRecyclerViewAdapter adapter=null;
-        if(getArguments().getInt(KEY_POSITION)==0)
-        {
+        MyNeighbourRecyclerViewAdapter adapter = null;
+        if (getArguments().getInt(KEY_POSITION) == 0) {
             adapter = new MyNeighbourRecyclerViewAdapter(mNeighbours);
             mRecyclerView.setAdapter(adapter);
 
-        }
-        else {
+        } else {
             adapter = new MyNeighbourRecyclerViewAdapter(favoris);
             mRecyclerView.setAdapter(adapter);
         }
         adapter.setOnItemClickListener(new MyNeighbourRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, long id) {
-                Intent intent =new Intent(getActivity(), NeighbourViewActivity.class);
-                intent.putExtra(KEY_NEIGHBOUR,id);
+                Intent intent = new Intent(getActivity(), NeighbourViewActivity.class);
+                intent.putExtra(KEY_NEIGHBOUR, id);
                 startActivity(intent);
 
             }
@@ -116,6 +115,7 @@ public class NeighbourFragment extends Fragment {
 
     /**
      * Fired if the user clicks on a delete button
+     *
      * @param event
      */
     @Subscribe

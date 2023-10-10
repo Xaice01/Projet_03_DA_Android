@@ -1,14 +1,14 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 
-import androidx.recyclerview.widget.RecyclerView;       //import android.support.v7.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -24,33 +24,30 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
-    public interface OnItemClickListener {
-        void onItemClick(int position,long id);
-    }
+    private static final String KEY_NEIGHBOUR = "kneighbour";
+
     private final List<Neighbour> mNeighbours;
-
-    private static final String KEY_NEIGHBOUR="kneighbour";
-
     private OnItemClickListener mListener;      //for the click on l'item
+    private ViewGroup parent;
 
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
     }
 
-
-    private ViewGroup parent;
-
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.parent = parent;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_neighbour, parent, false);
+        return new ViewHolder(view);
+    }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        this.parent=parent;
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_neighbour, parent, false);
-        return new ViewHolder(view);
+    public interface OnItemClickListener {
+        void onItemClick(int position, long id);
     }
 
     @Override
@@ -98,6 +95,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 }
             });
         }
+
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

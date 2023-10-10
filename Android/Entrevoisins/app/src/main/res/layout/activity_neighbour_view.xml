@@ -121,6 +121,7 @@
                     android:layout_marginTop="@dimen/marginTopIcon"
                     android:importantForAccessibility="no"
                     android:src="@drawable/language_40px"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_phone"
                     app:tint="@color/colorAccent" />
@@ -148,11 +149,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/text_Pos_Num_Face_Start"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/image_world"
                     app:layout_constraintStart_toEndOf="@+id/image_world"
                     tools:text="LienFaceBook" />
 
-                <View
+                <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_divider"
@@ -185,6 +187,7 @@
             android:layout_marginStart="@dimen/margin_card_start"
             android:layout_marginTop="@dimen/margin_top_card"
             android:layout_marginEnd="@dimen/margin_end_card"
+            android:layout_marginBottom="16dp"
             app:cardElevation="@dimen/card_Elevation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -221,7 +224,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/text_About_Me"
                     tools:text="@tools:sample/lorem[20]" />
 
-                <View
+                <com.google.android.material.divider.MaterialDivider
                     android:id="@+id/divider2"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/height_divider"

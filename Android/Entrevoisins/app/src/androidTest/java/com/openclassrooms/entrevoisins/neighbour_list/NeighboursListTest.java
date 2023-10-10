@@ -1,10 +1,29 @@
 
 package com.openclassrooms.entrevoisins.neighbour_list;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
+import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertFalse;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.espresso.contrib.RecyclerViewActions;  //import android.support.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.rule.ActivityTestRule;  //import android.support.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;  //import android.support.test.runner.AndroidJUnit4;
+import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
@@ -21,26 +40,6 @@ import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onView;   //import static android.support.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;   //import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
-import static androidx.test.espresso.matcher.ViewMatchers.assertThat;   //import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
-import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;     //import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertFalse;
-
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-
-
 
 /**
  * Test class for list of neighbours
@@ -49,7 +48,7 @@ import android.view.ViewParent;
 public class NeighboursListTest {
 
     // This is fixed
-    private static int ITEMS_COUNT = 12;
+    private static final int ITEMS_COUNT = 12;
 
     private ListNeighbourActivity mActivity;
 
@@ -116,17 +115,17 @@ public class NeighboursListTest {
 
     //test vérifiant que lorsqu’on clique sur un élément de la liste, l’écran de détails est bien lancé
     @Test
-    public void onClickItem_Show_Details(){
-        onView(withIndex(withId(R.id.list_neighbours),0)).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));  //simulate the click on frist item of recyclerView
+    public void onClickItem_Show_Details() {
+        onView(withIndex(withId(R.id.list_neighbours), 0)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));  //simulate the click on frist item of recyclerView
 
         onView(withId(R.id.constraintLayout_NeighbourViewActivity)).check(matches(isDisplayed()));
     }
 
     //test vérifiant qu’au démarrage de ce nouvel écran, le TextView indiquant le nom de l’utilisateur en question est bien rempli
     @Test
-    public void check_Textview(){
-        onView(withIndex(withId(R.id.list_neighbours),0)).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
-        String name= service.getNeighbours().get(0).getName();
+    public void check_Textview() {
+        onView(withIndex(withId(R.id.list_neighbours), 0)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        String name = service.getNeighbours().get(0).getName();
 
         onView(withId(R.id.Text_Prenom_Neighbour_Avatar)).check(matches(withText(name)));  //check if the name of TextView is "Caroline"
 
@@ -138,15 +137,15 @@ public class NeighboursListTest {
         Neighbour neighbour;
 
         ViewInteraction tabView2 = onView(
-            allOf(childAtPosition(childAtPosition(withId(R.id.tabs), 0), 1)));          //sur l'onglet favori
+                allOf(childAtPosition(childAtPosition(withId(R.id.tabs), 0), 1)));          //sur l'onglet favori
         tabView2.perform(click());
-        onView(withIndex(withId(R.id.list_neighbours),1)).check(withItemCount(0));  //check if list of favori is equal at 0
+        onView(withIndex(withId(R.id.list_neighbours), 1)).check(withItemCount(0));  //check if list of favori is equal at 0
 
         ViewInteraction tabView1 = onView(allOf(childAtPosition(childAtPosition(withId(R.id.tabs), 0), 0)));                //sur l'onglet Neighbour
         tabView1.perform(click());
 
         ///------------------------------------///
-        ViewInteraction recyclerView = onView(allOf(withIndex(withId(R.id.list_neighbours),0)));
+        ViewInteraction recyclerView = onView(allOf(withIndex(withId(R.id.list_neighbours), 0)));
         recyclerView.perform(actionOnItemAtPosition(1, click()));
 
         ViewInteraction floatingActionButton = onView(allOf(withId(R.id.floatingActionButton_favoris)));        //add favori Neighbour "Jack"
@@ -157,14 +156,14 @@ public class NeighboursListTest {
 
         tabView2.perform(click());                                                                              //positionnement sur l'onglet favori
 
-        onView(withIndex(withId(R.id.list_neighbours),1)).check(withItemCount(1));            //check if list of favori is equal at 1
-        neighbour= service.getNeighbours().get(1);                                                              //neighbour equal at "Jack"
-        onView(withIndex(withId(R.id.item_list_name),1)).check(matches(withText(neighbour.getName())));
+        onView(withIndex(withId(R.id.list_neighbours), 1)).check(withItemCount(1));            //check if list of favori is equal at 1
+        neighbour = service.getNeighbours().get(1);                                                              //neighbour equal at "Jack"
+        onView(withIndex(withId(R.id.item_list_name), 1)).check(matches(withText(neighbour.getName())));
 
 
-        neighbour= service.getNeighbours().get(3);
+        neighbour = service.getNeighbours().get(3);
         assertFalse(neighbour.isFavori());                                                                      //check if neighbour is not a favori
-        onView(withIndex(allOf(withId(R.id.item_list_name), withText(neighbour.getName()),isNotChecked()),1)); //check if neighbour is not in a list of favori
+        onView(withIndex(allOf(withId(R.id.item_list_name), withText(neighbour.getName()), isNotChecked()), 1)); //check if neighbour is not in a list of favori
     }
 
     /**
@@ -178,12 +177,8 @@ public class NeighboursListTest {
         onView(withIndex(withId(R.id.list_neighbours), 0))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(6, new DeleteViewAction()));
         // Then : the number of element is 11
-        onView(withIndex(withId(R.id.list_neighbours), 0)).check(withItemCount(ITEMS_COUNT-1));
+        onView(withIndex(withId(R.id.list_neighbours), 0)).check(withItemCount(ITEMS_COUNT - 1));
     }
-
-
-
-
 
 
 }

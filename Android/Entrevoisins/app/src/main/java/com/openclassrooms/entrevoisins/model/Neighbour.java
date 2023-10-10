@@ -7,30 +7,45 @@ import java.util.Objects;
  */
 public class Neighbour {
 
-    /** Identifier */
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Full name */
+    /**
+     * Full name
+     */
     private String name;
 
-    /** Avatar */
+    /**
+     * Avatar
+     */
     private String avatarUrl;
 
-    /** Adress */
+    /**
+     * Adress
+     */
     private String address;
 
-    /** Phone number */
+    /**
+     * Phone number
+     */
     private String phoneNumber;
 
-    /** About me */
+    /**
+     * About me
+     */
     private String aboutMe;
 
 
-    /** Favori */
+    /**
+     * Favori
+     */
     private boolean favori;
 
     /**
      * Constructor
+     *
      * @param id
      * @param name
      * @param avatarUrl
@@ -43,7 +58,7 @@ public class Neighbour {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
-        this.favori=false;          //attribue initialisé
+        this.favori = false;          //attribue initialisé
     }
 
     public long getId() {
