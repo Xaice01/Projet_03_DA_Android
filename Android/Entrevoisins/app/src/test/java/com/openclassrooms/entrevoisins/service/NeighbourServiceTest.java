@@ -32,12 +32,21 @@ public class NeighbourServiceTest {
         service = DI.getNewInstanceApiService();
     }
 
-    //ajout un neighbour
+    //test récupérer la liste des Neighbour
     @Test
     public void getNeighboursWithSuccess() {
         List<Neighbour> neighbours = service.getNeighbours();
         List<Neighbour> expectedNeighbours = DummyNeighbourGenerator.DUMMY_NEIGHBOURS;
         assertThat(neighbours, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedNeighbours.toArray()));
+    }
+
+    //test d'ajout d'un Neighbour
+    @Test
+    public void addNeighbourWithSucces() {
+        Neighbour neighbourToAdd = new Neighbour(14, "Test_name", "https://i.pravatar.cc/150?u=a042581f4e29026704d", "Saint-Pierre-du-Mont ; 5km", "+33 6 86 57 90 14", "Bonjour ceci est un test");
+        service.createNeighbour(neighbourToAdd);
+        assertTrue(service.getNeighbours().contains(neighbourToAdd));
+
     }
 
     //test delete neighbour
@@ -79,7 +88,7 @@ public class NeighbourServiceTest {
         assertTrue(favoris.contains(neighbourToFavori));                //vérification si le favori se trouve dans la liste de favori
     }
 
-    //récuperer l'utilisateur de la liste par son id recupTrueNeighbour(long idNeighbour)
+    //récuperer l'utilisateur de la liste par son id getNeighbourByID(long idNeighbour,list neighbours)
     @Test
     public void getNeighbourWithId() {
         List<Neighbour> neighbours = service.getNeighbours();

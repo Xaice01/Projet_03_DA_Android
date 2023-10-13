@@ -121,17 +121,20 @@ public class NeighboursListTest {
         onView(withId(R.id.constraintLayout_NeighbourViewActivity)).check(matches(isDisplayed()));
     }
 
-    //test vérifiant qu’au démarrage de ce nouvel écran, le TextView indiquant le nom de l’utilisateur en question est bien rempli
+    //test vérifiant qu’au démarrage de l'écran Détail, le TextView indiquant le nom de l’utilisateur en question est bien rempli
+    // + l'image de l'Avatar exist + le button de favori exist + un bouton de retour à l'élément précédent
     @Test
-    public void check_Textview() {
+    public void check_Detailview() {
         onView(withIndex(withId(R.id.list_neighbours), 0)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         String name = service.getNeighbours().get(0).getName();
 
         onView(withId(R.id.Text_Prenom_Neighbour_Avatar)).check(matches(withText(name)));  //check if the name of TextView is "Caroline"
-
+        onView(withId(R.id.imageView_Avatar)).check(matches(isDisplayed()));                //check if the picture is created
+        onView(withId(R.id.floatingActionButton_favoris)).check(matches(isDisplayed()));    //check if the button favori is created
+        onView(withId(R.id.imageButton_Arrow_Back)).check(matches(isDisplayed()));          //check if the button Back is created
     }
 
-    //test vérifiant que l’onglet Favoris n’affiche que les voisins marqués comme favoris
+    //test vérifiant que l’onglet Favoris n’affiche que les voisins marqués comme favoris +(ajout d'un voisin en favori)
     @Test
     public void check_List_Of_Favori() {
         Neighbour neighbour;
