@@ -9,7 +9,7 @@ API minimun 24
 ## Instalation (Dévelopeur)
 Clone le projet dans Android Studio 
 - File -> new -> Project From Version Control...
-- copier l'url du projet (https://github.com/Xaice01/Projet_03_DA_Android.git)
+- copier l'url du [projet](https://github.com/Xaice01/Projet_03_DA_Android.git)
 - dans Android Studio File-> open
 - ouvrir le fichier ...\Projet_03_DA_Android\Android\Entrevoisins
 - créer une nouvelle branch git
@@ -17,7 +17,7 @@ Clone le projet dans Android Studio
 
 ## Instalation (Utilisateur)
 Installer l'APK sur Android:
-- Télécharger L'APK (https://github.com/Xaice01/Projet_03_DA_Android/blob/master/Entrevoisins.apk)
+- Télécharger L'[APK](https://github.com/Xaice01/Projet_03_DA_Android/blob/master/Entrevoisins.apk) 
 - Mettre L'APK sur votre Téléphone
 - Allez dans les paramètres, puis Sécurité
 - Activez les sources inconnues
@@ -42,7 +42,7 @@ les fonctionnalité de cette application sont :
 
 ## Contribution 
 
-les auteurs du application sont Deyine (https://github.com/Deyine) et Xavier (https://github.com/Xaice01)
+les auteurs du application sont [Deyine](https://github.com/Deyine) et [Xavier](https://github.com/Xaice01)
 pour l'entreprise Entrevoisins
 
 
