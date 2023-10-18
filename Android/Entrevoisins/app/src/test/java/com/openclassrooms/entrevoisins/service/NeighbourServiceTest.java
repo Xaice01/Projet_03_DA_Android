@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.utils.RecupNeighbour;
+import com.openclassrooms.entrevoisins.utils.GetNeighbourByID;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
@@ -95,7 +95,7 @@ public class NeighbourServiceTest {
         Neighbour neighbourToCheck = service.getNeighbours().get(0);
         long id = neighbourToCheck.getId();
         Neighbour neighbour;
-        neighbour = RecupNeighbour.getNeighbourByID(id, neighbours);
+        neighbour = GetNeighbourByID.getNeighbourByID(id, neighbours);
 
         assertEquals(neighbour, neighbourToCheck);
 

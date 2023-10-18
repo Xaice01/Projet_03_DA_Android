@@ -14,7 +14,7 @@ import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
-import com.openclassrooms.entrevoisins.utils.RecupNeighbour;
+import com.openclassrooms.entrevoisins.utils.GetNeighbourByID;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class NeighbourViewActivity extends AppCompatActivity {
 
         //recupere le neighbour de la liste de mNeighbours de l'Apiservice
         long NeighbourID = getIntent().getLongExtra(KEY_NEIGHBOUR, 0);
-        neighbour = RecupNeighbour.getNeighbourByID(NeighbourID, mNeighbours);
+        neighbour = GetNeighbourByID.getNeighbourByID(NeighbourID, mNeighbours);
 
         bind(neighbour);
         //pour le Back à la list
