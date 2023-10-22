@@ -42,7 +42,7 @@ les fonctionnalité de cette application sont :
 
 ## Contribution 
 
-les auteurs du application sont [Deyine](https://github.com/Deyine) et [Xavier](https://github.com/Xaice01)
+les auteurs de l'application sont [Deyine](https://github.com/Deyine) et [Xavier](https://github.com/Xaice01)
 pour l'entreprise Entrevoisins
 
 
